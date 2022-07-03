@@ -233,10 +233,10 @@ def main():
     input_data = SOURCE_S3_BUCKET
     output_data = DEST_S3_BUCKET
 
-    # logging.info("Process cleaning started!")
-    # # upload cleaned dataframe to s3 
-    # process_clean_df(spark,input_data, output_data)
-    # logging.info("Data Cleaning completed!")
+    logging.info("Process cleaning started!")
+    # upload cleaned dataframe to s3 
+    process_clean_df(spark,input_data, output_data)
+    logging.info("Data Cleaning completed!")
 
 
     start_date = "2018-10-01"
@@ -244,8 +244,8 @@ def main():
     logging.info("Start Date: {}".format(start_date))
     logging.info("End Date:{}".format(end_date))
 
-    # # upload week summary parquet to s3
-    # processing_week_summary(spark,start_date,end_date,input_data,output_data)
+    # upload week summary parquet to s3
+    processing_week_summary(spark,start_date,end_date,input_data,output_data)
 
     week_table_name="week_sum_{}_{}".format(start_date,end_date)
     table_name = "sparkify_user_summary"
