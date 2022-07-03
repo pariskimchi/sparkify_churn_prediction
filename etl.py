@@ -108,7 +108,6 @@ def process_clean_df(spark,SOURCE_S3_BUCKET, DEST_S3_BUCKET):
     df_clean = cleaned_df(df)
 
     # save cleaned dataframe on redshift? or S3
-    # s3a://haneul-sparkify-warehouse/
     # df_clean.write.parquet(DEST_S3_BUCKET+"lake_clean_df",mode="overwrite")
 
     df_clean.write.parquet("s3a://haneul-sparkify-warehouse/"+"lake_clean_df",mode="overwrite")
@@ -176,7 +175,7 @@ def processing_week_summary(spark, start_date, end_date, input_path, output_path
 
     logger.info(" Start Processing user week summary {}~{}".format(start_date, end_date))
 
-    df = spark.read.parquet("s3a://haneul-sparkify-warehouse/"+"lake_clean_df")
+    df = spark.read.parquet(DEST_S3_BUCKET+"lake_clean_df")
     # get week df 
     df_week = get_week_from_df(df,start_date,end_date)
 
@@ -210,7 +209,7 @@ def processing_user_summary(spark,table_name,week_table_name, input_path, output
 
     """
     
-    df_clean = spark.read.parquet("s3a://haneul-sparkify-warehouse/"+"lake_clean_df")
+    df_clean = spark.read.parquet(DEST_S3_BUCKET+"lake_clean_df")
     # create empty User summary dataframe
     user_summary_week = UserSummary(spark,df_clean,table_name)
 
