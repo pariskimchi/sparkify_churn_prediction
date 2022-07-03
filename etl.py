@@ -110,7 +110,7 @@ def process_clean_df(spark,SOURCE_S3_BUCKET, DEST_S3_BUCKET):
     # save cleaned dataframe on redshift? or S3
     # df_clean.write.parquet(DEST_S3_BUCKET+"lake_clean_df",mode="overwrite")
 
-    df_clean.write.parquet("s3a://haneul-sparkify-warehouse/"+"lake_clean_df",mode="overwrite")
+    df_clean.write.parquet(DEST_S3_BUCKET+"lake_clean_df",mode="overwrite")
 
 
 
