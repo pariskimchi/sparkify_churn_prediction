@@ -23,17 +23,6 @@ from pyspark.ml import Pipeline
 from pyspark.ml.feature import MinMaxScaler,  StringIndexer, VectorAssembler 
 from pyspark.sql.types import StructField, StructType, IntegerType, FloatType, StringType, DateType
 
-# feature engineering 
-# from pyspark.ml import Pipeline 
-# from pyspark.ml.feature import MinMaxScaler,  StringIndexer, VectorAssembler 
-# from pyspark.sql.types import StructField, StructType, IntegerType, FloatType, StringType 
-
-# # modeling 
-# from pyspark.sql.functions import split 
-# from pyspark.ml.classification import LogisticRegression, RandomForestClassifier, GBTClassifier 
-# from pyspark.ml.evaluation  import MulticlassClassificationEvaluator 
-# from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
-
 
 def load_data_format(spark_session, data_path):
     """
